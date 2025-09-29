@@ -1,0 +1,8 @@
+# Rewrite clean URLs to .html files (internal, users see clean URLs)
+/terms  /terms.html  200
+/privacy  /privacy.html  200
+
+# Redirect .html URLs to clean URLs (permanent redirect)
+/terms.html  /terms  301
+/privacy.html  /privacy  301
+/index.html  /  301

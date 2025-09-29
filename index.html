@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNTM - Telecaller & Financial Guide Services</title>
+    <title>RNTM - Telecalling & Financial Guidance Services</title>
     <style>
         * {
             margin: 0;
@@ -15,17 +15,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
         }
 
+        /* Header & Navigation */
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 3px 10px rgba(235, 235, 235, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav {
@@ -45,27 +47,51 @@
 
         .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
             transition: opacity 0.3s;
-            font-weight: 500;
         }
 
         .nav-links a:hover {
             opacity: 0.8;
         }
 
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 120px 2rem 80px;
+            padding: 150px 2rem 100px;
             text-align: center;
-            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -77,104 +103,7 @@
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .legal-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .legal-content h2 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .legal-content h3 {
-            color: #764ba2;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content p, .legal-content ul {
-            margin-bottom: 1rem;
-            color: #555;
-        }
-
-        .legal-content ul {
-            padding-left: 2rem;
-        }
-
-        .legal-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
         }
 
         @keyframes fadeInUp {
@@ -188,101 +117,120 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
         }
 
-        .about-section {
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 2rem;
             background: #f8f9fa;
-            padding: 4rem 2rem;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .about-text h2 {
-            color: #667eea;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-text p {
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .features-section {
-            padding: 4rem 2rem;
-            background: white;
         }
 
         .section-title {
             text-align: center;
-            color: #667eea;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-card li:last-child {
+            border-bottom: none;
+        }
+
+        .service-card li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 3rem;
         }
 
-        .feature-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
+        .feature {
             text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
             transition: transform 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .feature:hover {
+            transform: scale(1.05);
         }
 
         .feature-icon {
@@ -290,189 +238,78 @@
             margin-bottom: 1rem;
         }
 
-        .feature-card h3 {
-            margin-bottom: 1rem;
+        .feature h3 {
             font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
 
-        .testimonials-section {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: #667eea;
-            opacity: 0.3;
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-        }
-
-        .testimonial-text {
-            margin: 2rem 0 1rem;
-            font-style: italic;
-            color: #555;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .process-section {
-            padding: 4rem 2rem;
+        /* Contact Section */
+        .contact {
+            padding: 80px 2rem;
             background: white;
         }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        .contact-content {
+            max-width: 800px;
             margin: 0 auto;
-        }
-
-        .process-step {
             text-align: center;
-            padding: 2rem;
         }
 
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
+        .contact-info {
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .process-step h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .process-step p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .hamburger {
-            display: none;
+        .contact-item {
+            display: flex;
             flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
+        .contact-item-icon {
+            font-size: 2rem;
+            color: #667eea;
         }
 
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
 
             .hero p {
-                font-size: 1rem;
-            }
-
-            .hamburger {
-                display: flex;
+                font-size: 1.1rem;
             }
 
             .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 60px;
-                flex-direction: column;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
-                padding: 2rem 0;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
-            }
-
-            .features-grid,
-            .testimonials-grid,
-            .process-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .about-text h2 {
-                font-size: 1.8rem;
-            }
-
-            nav {
-                padding: 0 1rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
+                font-size: 2rem;
             }
         }
     </style>
@@ -481,552 +318,210 @@
     <header>
         <nav>
             <div class="logo">RNTM</div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#" onclick="showSection('home'); closeMenu()">Home</a></li>
-                <li><a href="#" onclick="showSection('services'); closeMenu()">Services</a></li>
-                <li><a href="#" onclick="showSection('terms'); closeMenu()">Terms & Conditions</a></li>
-                <li><a href="#" onclick="showSection('privacy'); closeMenu()">Privacy Policy</a></li>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="home" class="content-section active">
-        <section class="hero">
-            <h1>Welcome to RNTM</h1>
-            <p>Your Trusted Partner in Telecalling & Financial Guidance</p>
-            <button class="cta-button" onclick="showSection('services')">Explore Our Services</button>
-        </section>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empowering Your Business & Financial Future</h1>
+            <p>Professional telecalling solutions and expert financial guidance tailored to your success</p>
+            <a href="#contact" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
 
+    <section class="services" id="services">
         <div class="container">
-            <h2 style="text-align: center; color: #667eea; margin-bottom: 3rem;">Why Choose RNTM?</h2>
-            <div class="services">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
                 <div class="service-card">
-                    <h3>📞 Professional Telecalling</h3>
-                    <p>Expert telecalling services to connect you with your customers effectively. Our trained professionals ensure quality communication and customer satisfaction.</p>
+                    <h3><span class="icon">📞</span> Telecalling Services</h3>
+                    <p style="margin-bottom: 1rem; color: #666;">Comprehensive calling solutions to drive your business growth</p>
+                    <ul>
+                        <li>Outbound call campaigns for lead generation</li>
+                        <li>Inbound call handling & customer support</li>
+                        <li>Appointment scheduling & follow-ups</li>
+                        <li>Market surveys & research</li>
+                        <li>Product promotion & sales</li>
+                        <li>Customer feedback collection</li>
+                    </ul>
                 </div>
+
                 <div class="service-card">
-                    <h3>💼 Financial Guidance</h3>
-                    <p>Comprehensive financial advisory services tailored to your needs. We help you make informed decisions for a secure financial future.</p>
+                    <h3><span class="icon">💼</span> Financial Planning</h3>
+                    <p style="margin-bottom: 1rem; color: #666;">Personalized strategies for your financial success</p>
+                    <ul>
+                        <li>Personal financial planning & budgeting</li>
+                        <li>Investment advisory & portfolio management</li>
+                        <li>Retirement planning strategies</li>
+                        <li>Tax planning & optimization</li>
+                        <li>Debt management & restructuring</li>
+                        <li>Wealth building consultation</li>
+                    </ul>
                 </div>
+
                 <div class="service-card">
-                    <h3>🎯 Personalized Solutions</h3>
-                    <p>Customized strategies designed specifically for your business goals and financial objectives. Your success is our priority.</p>
+                    <h3><span class="icon">🛡️</span> Risk Management</h3>
+                    <p style="margin-bottom: 1rem; color: #666;">Protect your assets and secure your future</p>
+                    <ul>
+                        <li>Insurance planning & review</li>
+                        <li>Risk assessment & mitigation</li>
+                        <li>Life & health insurance guidance</li>
+                        <li>Business insurance consulting</li>
+                        <li>Asset protection strategies</li>
+                        <li>Emergency fund planning</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3><span class="icon">📊</span> Business Consulting</h3>
+                    <p style="margin-bottom: 1rem; color: #666;">Strategic financial guidance for your enterprise</p>
+                    <ul>
+                        <li>Business financial planning</li>
+                        <li>Cash flow management</li>
+                        <li>Financial forecasting & analysis</li>
+                        <li>Business expansion strategies</li>
+                        <li>Cost optimization consulting</li>
+                        <li>Performance metrics & KPIs</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
 
-        <section class="about-section">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About RNTM</h2>
-                    <p>RNTM is a leading provider of professional telecalling and financial guidance services located in bhubaneswar. With years of experience in the industry, we have helped numerous businesses and individuals achieve their communication and financial goals.</p>
-                    <p>Our team of dedicated professionals combines industry expertise with cutting-edge technology to deliver exceptional results. We pride ourselves on our commitment to excellence, integrity, and client satisfaction.</p>
-                    <p>Whether you need to expand your customer reach through professional telecalling or seek expert financial guidance for your future, RNTM is your trusted partner every step of the way.</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Happy Clients</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label">Calls Completed</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Satisfaction Rate</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support Available</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-section">
-            <h2 class="section-title">Our Key Features</h2>
-            <p class="section-subtitle">What makes us stand out from the competition</p>
+    <section class="why-choose" id="why-us">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Why Choose RNTM?</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature">
                     <div class="feature-icon">⚡</div>
-                    <h3>Fast Response Time</h3>
-                    <p>Quick turnaround on all your queries and service requests with dedicated support team.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Data Security</h3>
-                    <p>Your information is protected with industry-leading security measures and strict confidentiality.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
                     <h3>Expert Team</h3>
-                    <p>Highly trained professionals with extensive experience in telecalling and financial services.</p>
+                    <p>Certified professionals with years of industry experience</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Detailed Reports</h3>
-                    <p>Comprehensive analytics and reports to track your progress and ROI effectively.</p>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Tailored Solutions</h3>
+                    <p>Customized strategies for individual and corporate needs</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Competitive Pricing</h3>
-                    <p>Affordable packages tailored to suit businesses of all sizes without compromising quality.</p>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Confidential & Secure</h3>
+                    <p>Your data and privacy are our top priority</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Continuous Training</h3>
-                    <p>Regular training programs ensure our team stays updated with latest industry practices.</p>
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <h3>Proven Results</h3>
+                    <p>Track record of helping clients achieve their goals</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="process-section">
-            <h2 class="section-title">How We Work</h2>
-            <p class="section-subtitle">Our simple and effective process</p>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Consultation</h3>
-                    <p>We understand your needs and objectives through detailed consultation sessions.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Strategy</h3>
-                    <p>Develop a customized plan tailored to your specific requirements and goals.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Execution</h3>
-                    <p>Our expert team implements the strategy with precision and professionalism.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Results</h3>
-                    <p>Track progress, analyze results, and optimize for continuous improvement.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials-section">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <p class="section-subtitle">Real feedback from real people</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">RNTM's telecalling services have significantly improved our customer engagement. Their professional approach and attention to detail are commendable.</p>
-                    <p class="testimonial-author">- Rajesh Kumar, Business Owner</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">The financial guidance I received from RNTM helped me make informed investment decisions. Their expertise is truly valuable.</p>
-                    <p class="testimonial-author">- Priya Sharma, Entrepreneur</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">Outstanding service! The team is responsive, knowledgeable, and genuinely cares about client success. Highly recommended!</p>
-                    <p class="testimonial-author">- Amit Patel, Marketing Director</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <h2>Ready to Get Started?</h2>
-            <p>Let's discuss how RNTM can help you achieve your business and financial goals</p>
-            <button class="cta-button" onclick="showSection('services')">View Our Services</button>
-        </section>
-    </div>
-
-    <div id="services" class="content-section">
-        <section class="hero" style="margin-top: 60px;">
-            <h1>Our Services</h1>
-            <p>Comprehensive Solutions for Your Business</p>
-        </section>
-
-        <div class="container">
-            <div class="legal-content">
-                <h2>Telecaller Services</h2>
-                <p>RNTM provides professional telecalling services that help businesses connect with their customers efficiently and effectively. Our services include:</p>
-                <ul>
-                    <li>Outbound calling campaigns for lead generation and customer outreach</li>
-                    <li>Inbound call handling with professional customer service</li>
-                    <li>Customer follow-up and relationship management</li>
-                    <li>Appointment scheduling and confirmation calls</li>
-                    <li>Survey and feedback collection</li>
-                    <li>Product and service promotion</li>
-                </ul>
-
-                <h2 style="margin-top: 3rem;">Financial Guide Services</h2>
-                <p>Our experienced financial advisors provide expert guidance to help you achieve your financial goals:</p>
-                <ul>
-                    <li>Personal financial planning and budgeting assistance</li>
-                    <li>Investment advisory and portfolio management guidance</li>
-                    <li>Retirement planning strategies</li>
-                    <li>Tax planning consultation</li>
-                    <li>Debt management and financial restructuring advice</li>
-                    <li>Insurance and risk management planning</li>
-                    <li>Business financial consulting</li>
-                </ul>
-
-                <p style="margin-top: 2rem;"><strong>Note:</strong> All our services are provided with the highest standards of professionalism, confidentiality, and ethical practices.</p>
             </div>
         </div>
+    </section>
 
-        <section class="process-section">
-            <h2 class="section-title">Service Packages</h2>
-            <p class="section-subtitle">Choose the plan that fits your needs</p>
-            <div class="features-grid">
-                <div class="service-card">
-                    <h3>🥉 Basic Package</h3>
-                    <p><strong>Telecalling:</strong></p>
-                    <ul style="text-align: left; margin: 1rem 0;">
-                        <li>Up to 500 calls/month</li>
-                        <li>Basic call scripts</li>
-                        <li>Weekly reports</li>
-                        <li>Email support</li>
-                    </ul>
-                    <p><strong>Financial Guidance:</strong></p>
-                    <ul style="text-align: left;">
-                        <li>1 consultation session</li>
-                        <li>Basic financial planning</li>
-                        <li>Email support</li>
-                    </ul>
-                </div>
-                <div class="service-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                    <h3 style="color: white;">🥈 Professional Package</h3>
-                    <p><strong>Telecalling:</strong></p>
-                    <ul style="text-align: left; margin: 1rem 0;">
-                        <li>Up to 2000 calls/month</li>
-                        <li>Custom call scripts</li>
-                        <li>Real-time reporting</li>
-                        <li>Dedicated account manager</li>
-                        <li>Phone & email support</li>
-                    </ul>
-                    <p><strong>Financial Guidance:</strong></p>
-                    <ul style="text-align: left;">
-                        <li>4 consultation sessions</li>
-                        <li>Comprehensive planning</li>
-                        <li>Investment guidance</li>
-                        <li>Priority support</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <h3>🥇 Enterprise Package</h3>
-                    <p><strong>Telecalling:</strong></p>
-                    <ul style="text-align: left; margin: 1rem 0;">
-                        <li>Unlimited calls</li>
-                        <li>Advanced scripting & CRM</li>
-                        <li>Daily analytics dashboard</li>
-                        <li>Dedicated team</li>
-                        <li>24/7 support</li>
-                    </ul>
-                    <p><strong>Financial Guidance:</strong></p>
-                    <ul style="text-align: left;">
-                        <li>Unlimited consultations</li>
-                        <li>Full-service planning</li>
-                        <li>Portfolio management</li>
-                        <li>Tax optimization</li>
-                        <li>VIP support</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="about-section">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose Our Services?</h2>
-                    <p><strong>Industry Expertise:</strong> Our team brings years of experience in both telecalling and financial advisory services, ensuring you receive top-quality guidance.</p>
-                    <p><strong>Proven Track Record:</strong> We've successfully served hundreds of clients, helping them achieve measurable results in customer engagement and financial growth.</p>
-                    <p><strong>Personalized Approach:</strong> Every client is unique. We tailor our services to match your specific needs, goals, and budget.</p>
-                    <p><strong>Technology-Driven:</strong> We use the latest tools and technologies to deliver efficient, accurate, and timely services.</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Client Retention</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Active Campaigns</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">₹10Cr+</div>
-                        <div class="stat-label">Assets Managed</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials-section">
-            <h2 class="section-title">Success Stories</h2>
-            <p class="section-subtitle">How we've helped our clients succeed</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">RNTM's telecalling team generated 200+ qualified leads in just 2 months. Their professionalism and dedication to our campaign were exceptional.</p>
-                    <p class="testimonial-author">- Tech Solutions Pvt Ltd</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">The financial planning service helped me reorganize my investments and save 30% on taxes. The advice was practical and easy to implement.</p>
-                    <p class="testimonial-author">- Neha Reddy, IT Professional</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-icon">"</div>
-                    <p class="testimonial-text">We've been using RNTM for our customer service calls for over a year. The improvement in customer satisfaction has been remarkable.</p>
-                    <p class="testimonial-author">- E-Commerce Startup</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-section">
-            <h2 class="section-title">Industries We Serve</h2>
-            <p class="section-subtitle">Delivering excellence across multiple sectors</p>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">🏢</div>
-                    <h3>Real Estate</h3>
-                    <p>Lead generation and property consultation support</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">🏥</div>
-                    <h3>Healthcare</h3>
-                    <p>Appointment scheduling and patient follow-up</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">🛒</div>
-                    <h3>E-Commerce</h3>
-                    <p>Customer support and order management</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">🎓</div>
-                    <h3>Education</h3>
-                    <p>Student enrollment and course promotion</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">💼</div>
-                    <h3>Insurance</h3>
-                    <p>Policy renewals and claims assistance</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">🚗</div>
-                    <h3>Automotive</h3>
-                    <p>Sales support and service reminders</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <h2>Ready to Transform Your Business?</h2>
-            <p>Get in touch with us today for a free consultation and discover how we can help you grow</p>
-            <a href="tel:+91 9337981546"></a><button class="cta-button">Contact Us Now</button></a>
-        </section>
-    </div>
-
-    <div id="terms" class="content-section">
-        <section class="hero" style="margin-top: 60px;">
-            <h1>Terms & Conditions</h1>
-            <p>Please read these terms carefully</p>
-        </section>
-
+    <section class="contact" id="contact">
         <div class="container">
-            <div class="legal-content">
-                <p><strong>Last Updated:</strong> September 29, 2025</p>
-
-                <h3>1. Acceptance of Terms</h3>
-                <p>By accessing and using RNTM's services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use our services.</p>
-
-                <h3>2. Services Provided</h3>
-                <p>RNTM provides telecaller services and financial guidance services. The scope of services will be defined in individual service agreements with clients. We reserve the right to modify, suspend, or discontinue any service at any time without prior notice.</p>
-
-                <h3>3. Client Responsibilities</h3>
-                <ul>
-                    <li>Provide accurate and complete information required for service delivery</li>
-                    <li>Comply with all applicable laws and regulations</li>
-                    <li>Make timely payments as per agreed terms</li>
-                    <li>Maintain confidentiality of any account credentials or sensitive information</li>
-                </ul>
-
-                <h3>4. Financial Guidance Disclaimer</h3>
-                <p>The financial guidance provided by RNTM is for informational and educational purposes only. It should not be considered as professional financial advice, investment advice, or a recommendation to buy or sell any securities. Clients should consult with licensed financial professionals before making any financial decisions. RNTM is not responsible for any financial losses incurred based on our guidance.</p>
-
-                <h3>5. Telecalling Services</h3>
-                <p>Our telecalling services are conducted in compliance with applicable telemarketing laws and regulations. We maintain Do Not Call (DNC) registry compliance and respect customer preferences. Clients must provide accurate contact lists and ensure they have proper consent to contact individuals.</p>
-
-                <h3>6. Payment Terms</h3>
-                <p>Payment terms will be specified in individual service agreements. Late payments may incur additional charges. RNTM reserves the right to suspend services for non-payment.</p>
-
-                <h3>7. Confidentiality</h3>
-                <p>RNTM maintains strict confidentiality of all client information and data. We will not disclose client information to third parties without consent, except as required by law.</p>
-
-                <h3>8. Limitation of Liability</h3>
-                <p>RNTM shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from the use of our services. Our total liability shall not exceed the amount paid by the client for the specific service in question.</p>
-
-                <h3>9. Intellectual Property</h3>
-                <p>All content, materials, and intellectual property related to RNTM's services remain the property of RNTM unless otherwise specified in writing.</p>
-
-                <h3>10. Termination</h3>
-                <p>Either party may terminate services with written notice as specified in the service agreement. RNTM reserves the right to terminate services immediately for breach of terms or unethical conduct.</p>
-
-                <h3>11. Governing Law</h3>
-                <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in Bhubaneswar, Odisha.</p>
-
-                <h3>12. Modifications</h3>
-                <p>RNTM reserves the right to modify these Terms and Conditions at any time. Updated terms will be posted on our website with the revision date. Continued use of services after modifications constitutes acceptance of the updated terms.</p>
-
-                <h3>13. Contact Information</h3>
-                <p>For questions regarding these Terms and Conditions, please contact us through our official communication channels.</p>
+            <div class="contact-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                    Ready to transform your business and financial future? Contact us today for a consultation.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🌐</div>
+                        <a href="https://rntm.in" target="_blank">www.rntm.in</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <a href="mailto:chikunacharya52@gmail.com">chikunacharya52@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <a href="tel:+919337981546">+91 93379 81546</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div style="max-width: 300px;">
+                            <strong>RNTM Raghunath Telecaller Marketing</strong><br>
+                            Cuttack Road, Baramunda<br>
+                            Bhubaneswar, Khordha, Odisha 756100<br>
+                            India
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div id="privacy" class="content-section">
-        <section class="hero" style="margin-top: 60px;">
-            <h1>Privacy Policy</h1>
-            <p>Your privacy is important to us</p>
-        </section>
-
-        <div class="container">
-            <div class="legal-content">
-                <p><strong>Last Updated:</strong> September 29, 2025</p>
-
-                <h3>1. Introduction</h3>
-                <p>RNTM ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our telecaller and financial guide services.</p>
-
-                <h3>2. Information We Collect</h3>
-                <p>We may collect the following types of information:</p>
-                <ul>
-                    <li><strong>Personal Information:</strong> Name, email address, phone number, postal address, date of birth, and other contact details</li>
-                    <li><strong>Financial Information:</strong> Income details, investment information, financial goals, and related financial data (only with your consent)</li>
-                    <li><strong>Communication Data:</strong> Call recordings, email correspondence, chat messages, and feedback</li>
-                    <li><strong>Technical Information:</strong> IP address, browser type, device information, and usage data when you visit our website</li>
-                    <li><strong>Business Information:</strong> Company name, business details, and professional information for corporate clients</li>
-                </ul>
-
-                <h3>3. How We Use Your Information</h3>
-                <p>We use collected information for the following purposes:</p>
-                <ul>
-                    <li>To provide and deliver our telecalling and financial guidance services</li>
-                    <li>To communicate with you regarding services, appointments, and updates</li>
-                    <li>To process payments and maintain financial records</li>
-                    <li>To improve our services and customer experience</li>
-                    <li>To comply with legal obligations and regulatory requirements</li>
-                    <li>To send promotional materials and service updates (with your consent)</li>
-                    <li>To analyze usage patterns and optimize our website and services</li>
-                </ul>
-
-                <h3>4. Information Sharing and Disclosure</h3>
-                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
-                <ul>
-                    <li><strong>With Your Consent:</strong> When you explicitly authorize us to share information</li>
-                    <li><strong>Service Providers:</strong> With trusted third-party vendors who assist in service delivery (under strict confidentiality agreements)</li>
-                    <li><strong>Legal Requirements:</strong> When required by law, court order, or government regulations</li>
-                    <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                    <li><strong>Protection of Rights:</strong> To protect the rights, property, or safety of RNTM, our clients, or others</li>
-                </ul>
-
-                <h3>5. Data Security</h3>
-                <p>We implement appropriate technical and organizational security measures to protect your information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
-                <ul>
-                    <li>Encryption of sensitive data during transmission and storage</li>
-                    <li>Regular security assessments and updates</li>
-                    <li>Access controls and authentication procedures</li>
-                    <li>Employee training on data protection and confidentiality</li>
-                    <li>Secure data backup and recovery systems</li>
-                </ul>
-                <p>However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
-
-                <h3>6. Call Recording</h3>
-                <p>For quality assurance and training purposes, we may record telephone conversations. By using our telecalling services, you consent to such recordings. Recordings are stored securely and accessed only by authorized personnel.</p>
-
-                <h3>7. Data Retention</h3>
-                <p>We retain your information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required by law. Financial records may be retained for statutory compliance periods.</p>
-
-                <h3>8. Your Rights</h3>
-                <p>You have the following rights regarding your personal information:</p>
-                <ul>
-                    <li><strong>Access:</strong> Request access to your personal information we hold</li>
-                    <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
-                    <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal obligations)</li>
-                    <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</li>
-                    <li><strong>Data Portability:</strong> Request a copy of your data in a portable format</li>
-                    <li><strong>Restriction:</strong> Request restriction of processing in certain circumstances</li>
-                </ul>
-                <p>To exercise these rights, please contact us using the information provided below.</p>
-
-                <h3>9. Cookies and Tracking Technologies</h3>
-                <p>Our website may use cookies and similar tracking technologies to enhance user experience and analyze website traffic. You can control cookie settings through your browser preferences.</p>
-
-                <h3>10. Third-Party Links</h3>
-                <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.</p>
-
-                <h3>11. Children's Privacy</h3>
-                <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware of such collection, we will delete the information promptly.</p>
-
-                <h3>12. International Data Transfers</h3>
-                <p>If we transfer your information outside of India, we will ensure appropriate safeguards are in place to protect your data in accordance with this Privacy Policy.</p>
-
-                <h3>13. Changes to This Privacy Policy</h3>
-                <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. The updated policy will be posted on our website with the revision date. We encourage you to review this policy regularly.</p>
-
-                <h3>14. Contact Us</h3>
-                <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:</p>
-                <p><strong>RNTM</strong><br>
-                Bhubaneswar, Odisha, India<br>
-                Email: info@rntm.com<br>
-                Phone: +91 9337981546</p>
-
-                <h3>15. Consent</h3>
-                <p>By using RNTM's services, you consent to the collection, use, and processing of your information as described in this Privacy Policy.</p>
-            </div>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 RNTM. All rights reserved.</p>
-        <p>Maintain and Develop by Trackepay Fintech OPC Pvt. Ltd.</p>
+        <p>&copy; 2025 RNTM Raghunath Telecaller Marketing. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="terms.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">Terms & Conditions</a> | 
+            <a href="privacy.html" style="color: #667eea; text-decoration: none; margin: 0 1rem;">Privacy Policy</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            Website Developed & Managed by <a href="https://www.trackepay.in" target="_blank" style="color: #667eea; text-decoration: none;">Trackepay</a>
+        </p>
     </footer>
 
     <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
             
-            document.getElementById(sectionId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.remove('active');
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.getElementById('navLinks');
-            
-            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+            if (currentScroll > 100) {
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.style.padding = '1rem 0';
             }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
