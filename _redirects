@@ -1,3 +1,0 @@
-# Rewrite clean URLs to .html files (internal, users see clean URLs)
-/terms  /terms.html  200
-/privacy  /privacy.html  200
